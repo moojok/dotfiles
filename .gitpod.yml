@@ -1,0 +1,60 @@
+image: gitpod/workspace-full
+tasks:
+
+  - name: Script Pre
+    init: echo 'Environment'
+    command: |
+      bash -lic 'true' # because running zsh https://www.gitpod.io/docs/configure/workspaces/workspace-image#load-bash-environment-in-custom-shell
+      if [ ! -f "/home/gitpod/.ssh/config" ]; then touch /home/gitpod/.ssh/config; fi
+
+  - name: Start Script
+    init: echo 'Running start script'
+    command: |
+      pnpm add pnpm
+      sudo apt update && sudo apt full-upgrade -y
+      sudo apt install flatpak-xdg-utils
+      (curl -Ls --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
+      curl https://get.trunk.io -fsSL | bash -s -- -y
+      sudo apt install curl
+      curl -sSL https://github.com/cli/cli/releases/download/v2.30.0/gh_2.30.0_linux_amd64.deb -o ~/gh.deb && sudo dpkg -i ~/gh.deb && rm ~/gh.deb
+      sudo cargo install --force aichat
+      pipenv install websockets PyQt6 PyQtWebEngine docutils sphinx pyenchant
+      git clone https://github.com/leo-editor/leo-editor.git /home/gitpod/.venv/leo-editor
+      pipenv install --editable /home/gitpod/.venv/leo-editor
+      brew install chezmoi
+      brew cleanup
+      if [ ! -f "/home/gitpod/.config/chezmoi" ]; then mkdir /home/gitpod/.config/chezmoi; touch /home/
+      gitpod/.config/chezmoi/chezmoi.yaml;  printf "%s\n%s\n%s\n" "sourceDir: /workspace/dotfiles" "git:" "    autoPush: true" >>  /home/gitpod/.config/chezmoi/chezmoi.yaml; fi
+
+  - name: Env Script
+    init: echo 'Setting up env'
+    command: |
+      echo 'Adding variables...'
+      export CHEZMOI_SOURCE_DIR="/workspace/dotfiles"
+      echo 'Done'
+
+ports:
+  - name: TabNine
+    description: Port 1123 for code along
+    port: 1123
+    onOpen: open-preview
+
+vscode:
+  extensions:
+    - sourcegraph.cody-ai
+    - trunk.io
+    - Codium.codium
+    - Codeium.codeium
+
+    - sourcegraph.cody-ai
+    - boltex.leointeg
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: false
+    addComment: false
+    addBadge: false
+    addLabel: prebuilt-in-gitpod
+

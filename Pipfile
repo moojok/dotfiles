@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+websockets = "*"
+pyqt6 = "*"
+pyqtwebengine = "*"
+docutils = "*"
+sphinx = "*"
+pyenchant = "*"
+leo = {editable = true, path = "/home/gitpod/.venv/leo-editor"}
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

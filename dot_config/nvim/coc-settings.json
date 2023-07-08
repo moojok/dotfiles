@@ -1,0 +1,286 @@
+{
+  "notification.statusLineProgress": false,
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "coc.preferences.enableMessageDialog": true,
+  "coc.preferences.enableLinkedEditing": true,
+  "coc.preferences.silentAutoupdate": true,
+  "coc.preferences.formatOnSave": true,
+  "semanticTokens.enable": true,
+  "colors.enable": true,
+  "codeLens.enable": true,
+  "codeLens.position": "top",
+  "codeLens.separator": "󰌵 CodeLens Actions:",
+  "codeLens.subseparator": " 󰝨 ",
+  "explorer.icon.enableNerdfont": true,
+  "explorer.icon.source": "vim-devicons",
+  "explorer.floating.border.title": "Explorer: Press ? to show help",
+  "diagnostic.locationlistLevel": "warning",
+  "diagnostic.locationlistUpdate": true,
+  "diagnostic.autoRefresh": true,
+  "diagnostic.hintSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.errorSign": "",
+  "suggest.removeDuplicateItems": true,
+  "suggest.completionItemKindLabels": {
+    "keyword": "",
+    "variable": "",
+    "value": "",
+    "operator": "",
+    "constructor": "",
+    "function": "󰊕",
+    "reference": "",
+    "constant": "",
+    "method": "",
+    "struct": "",
+    "class": "",
+    "interface": "",
+    "text": "",
+    "enum": "",
+    "enumMember": "",
+    "module": "",
+    "color": "",
+    "property": "",
+    "field": "",
+    "unit": "",
+    "event": "",
+    "file": "",
+    "folder": "",
+    "snippet": "",
+    "typeParameter": "",
+    "default": ""
+  },
+  "snippets.priority": 89,
+  "coc.source.zsh.priority": 99,
+  "go.checkForUpdates": "install",
+  "go.goplsOptions": {
+    "local": "moojok.online",
+    "gofumpt": true,
+    "staticcheck": true,
+    "semanticTokens": true,
+    "analyses": {
+      "fieldalignment": true,
+      "nilness": true,
+      "unusedparams": true,
+      "unusedwrite": true,
+      "shadow": true,
+      "useany": true
+    },
+    "codelenses": {
+      "gc_details": true,
+      "generate": true,
+      "regenerate_cgo": true,
+      "tidy": true,
+      "upgrade_dependency": true,
+      "vendor": true
+    }
+  },
+  "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {}
+    },
+    "lua": {
+      "command": "lua-lsp",
+      "filetypes": ["lua"]
+    },
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh", "bash"]
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
+    "buf": {
+      "command": "bufls",
+      "args": ["serve"],
+      "filetypes": ["proto"]
+    },
+    "jsonnet": {
+      "command": "jsonnet-language-server",
+      "args": ["-t"],
+      "rootPatterns": [".git/", "jsonnetfile.json"],
+      "filetypes": ["jsonnet", "libsonnet"]
+    }
+  },
+  "diagnostic-languageserver.mergeConfig": true,
+  "diagnostic-languageserver.debug": true,
+  "diagnostic-languageserver.linters": {
+    "golangci-lint2": {
+      "command": "golangci-lint",
+      "rootPatterns": ["go.mod"],
+      "debounce": 100,
+      "args": ["--out-format", "json", "--deadline", "5s", "run", "%dirname"],
+      "sourceName": "golangci-lint",
+      "parseJson": {
+        "sourceName": "Pos.Filename",
+        "sourceNameFilter": true,
+        "errorsRoot": "Issues",
+        "line": "Pos.Line",
+        "column": "Pos.Column",
+        "message": "${Text} [${FromLinter}]"
+      }
+    },
+    "zsh": {
+      "command": "zsh",
+      "args": ["-n", "%file"],
+      "isStdout": false,
+      "isStderr": true,
+      "sourceName": "zsh",
+      "formatLines": 1,
+      "formatPattern": [
+        "^[^:]+:(\\d+):\\s+(.*)$",
+        {
+          "line": 1,
+          "message": 2
+        }
+      ]
+    }
+  },
+  "diagnostic-languageserver.filetypes": {
+    "go": "golangci-lint2",
+    "zsh": "zsh"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "sh": "shfmt",
+    "bash": "shfmt",
+    "terraform": "tffmt"
+  },
+  "ltex.configurationTarget": {
+    "dictionary": "userExternalFile",
+    "disabledRules": "workspaceFolderExternalFile",
+    "hiddenFalsePositives": "workspaceFolderExternalFile"
+  },
+  "ltex.diagnosticSeverity": "warning",
+  "ltex.completionEnabled": true,
+  /*  "ltex.enabled": [
+    "bibtex",
+    "context",
+    "context.tex",
+    "html",
+    "latex",
+    "markdown",
+    "org",
+    "restructuredtext",
+    "rsweave",
+    "go",
+    "typescript",
+    "python",
+    "shellscript",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "lua"
+  ],*/
+  "ltex.languageToolHttpServerUri": "${env:LANGTOOL_HTTP_URI}",
+  "ltex.languageToolOrg.username": "${env:LANGTOOL_USERNAME}",
+  "ltex.languageToolOrg.apiKey": "${env:LANGTOOL_API_KEY}",
+  "eslint.packageManager": "yarn",
+  "eslint.nodePath": ".yarn/sdks",
+  "tsserver.tsdk": ".yarn/sdks/typescript/lib",
+  "python.formatting.provider": "black",
+  "cSpell.showStatus": false,
+  "cSpell.allowCompoundWords": true,
+  "cSpell.userWords": [],
+  "cSpell.dictionaries": [
+    "Moojok",
+    "wordsEn",
+    "en_US",
+    "softwareTerms",
+    "misc",
+    "go",
+    "typescript",
+    "bash",
+    "node"
+  ],
+  "cSpell.languageSettings": [
+    {
+      "languageId": "python",
+      "includeRegExpList": ["/#.*/", "/('''|\"\"\")[^\\1]+?\\1/g", "strings"]
+    },
+    {
+      "languageId": "javascript,typescript",
+      "includeRegExpList": ["CStyleComment", "strings"]
+    },
+    {
+      "languageId": "cpp,c",
+      // Only check comments and strings
+      "includeRegExpList": ["CStyleComment", "string"],
+      // Exclude includes, because they are also strings.
+      "ignoreRegExpList": ["/#include.*/"]
+    },
+    {
+      "languageId": "go",
+      // Only check comments and strings
+      "includeRegExpList": ["CStyleComment", "string"],
+      // Exclude imports, because they are also strings.
+      "ignoreRegExpList": [
+        // ignore multiline imports
+        "import\\s*\\((.|[\r\n])*?\\)",
+        // ignore single line imports
+        "import\\s*.*\".*?\""
+      ]
+    },
+    {
+      "languageId": "vim",
+      "includeRegExpList": ["^\\s*\".*", "strings"]
+    },
+    {
+      "languageId": "proto",
+      "includeRegExpList": ["CStyleComment", "string"],
+      "ignoreRegExpList": [
+        "/package.*/",
+        "/import.*/",
+        "/option.*/",
+        "/@gotags.*/"
+      ]
+    }
+  ],
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "c",
+    "cpp",
+    "csharp",
+    "css",
+    "git-commit",
+    "gitcommit",
+    "go",
+    "handlebars",
+    "haskell",
+    "html",
+    "jade",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "plaintext",
+    "proto",
+    "pug",
+    "python",
+    "restructuredtext",
+    "rust",
+    "scala",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "vim",
+    "yaml",
+    "yml"
+  ]
+}
